@@ -119,4 +119,4 @@ Feel free to open issues or pull requests. Please follow coding standards and in
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) Mayank Sagar
