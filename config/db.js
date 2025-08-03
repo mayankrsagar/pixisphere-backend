@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 dotenv.config();
 
-let pgClient;
+// let pgClient;
 
 export const connectMongo = async () => {
   try {
