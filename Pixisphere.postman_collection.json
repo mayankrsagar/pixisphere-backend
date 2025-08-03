@@ -1,0 +1,180 @@
+{
+  "info": {
+    "_postman_id": "e3b0c442-98fc-4f1f-ae5e-123456789abc",
+    "name": "Pixisphere Backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection to test Pixisphere Backend endpoints"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test Client\",\n  \"email\": \"client@example.com\",\n  \"password\": \"pass123\",\n  \"role\": \"client\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/signup",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "signup"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"client@example.com\",\n  \"password\": \"pass123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inquiries",
+      "item": [
+        {
+          "name": "Create Inquiry",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subject\": \"Need a website\",\n  \"description\": \"Looking for a MERN developer.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/inquiry",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inquiry"]
+            }
+          }
+        },
+        {
+          "name": "List Inquiries",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/inquiry",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inquiry"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Partner",
+      "item": [
+        {
+          "name": "Add Portfolio",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Portfolio Item\",\n  \"description\": \"Description here\",\n  \"link\": \"https://example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/partner/portfolio",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "partner", "portfolio"]
+            }
+          }
+        },
+        {
+          "name": "Submit Verification Docs",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\"https://docs.example.com/doc1.pdf\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/partner/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "partner", "verify"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "List Verifications",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/verifications",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "verifications"]
+            }
+          }
+        },
+        {
+          "name": "Change Verification Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"verified\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/verifications/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "verifications", ":id"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
